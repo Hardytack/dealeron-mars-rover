@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap");
+body {
+  background: #19325d;
+  font-family: "Oswald", sans-serif;
+  font-size: 16px; }
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  max-width: 1000px; }
+
+header h1 {
+  color: #f47325;
+  text-align: center;
+  font-size: 2em; }
+  @media only screen and (max-width: 460px) {
+    header h1 {
+      font-size: 1.6em; } }
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 15px; }
+  .form-group label {
+    color: #ffffff;
+    font-weight: bold; }
+  .form-group input {
+    font-weight: 400;
+    padding: 10px;
+    border-radius: 5px; }
+  .form-group button {
+    cursor: pointer;
+    background: #f47325;
+    width: 50%;
+    padding: 15px;
+    border-radius: 10px;
+    justify-self: center;
+    transition: all 0.25s ease;
+    font-weight: 600;
+    font-size: 1em; }
+    .form-group button:hover {
+      background: #db590b; }
+
+#resultBox {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2em; }
+  #resultBox span {
+    color: #f47325; }
+  #resultBox #failure {
+    color: red !important; }
+
+footer {
+  text-align: center;
+  color: #ffffff; }
+  footer a {
+    text-decoration: none;
+    color: #ffffff; }
+    footer a:hover {
+      color: #f47325; }

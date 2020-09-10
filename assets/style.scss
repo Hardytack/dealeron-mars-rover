@@ -1,0 +1,81 @@
+$blue: #19325d;
+$orange: #f47325;
+$white: #ffffff;
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap");
+
+body {
+  background: $blue;
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+}
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+header {
+  h1 {
+    color: $orange;
+    text-align: center;
+    font-size: 2em;
+    @media only screen and (max-width: 460px) {
+      font-size: 1.6em;
+    }
+  }
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 15px;
+  label {
+    color: $white;
+    font-weight: bold;
+  }
+  input {
+    font-weight: 400;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  button {
+    cursor: pointer;
+    background: $orange;
+    width: 50%;
+    padding: 15px;
+    border-radius: 10px;
+    justify-self: center;
+    transition: all 0.25s ease;
+    font-weight: 600;
+    font-size: 1em;
+    &:hover {
+      background: darken($orange, 10%);
+    }
+  }
+}
+
+#resultBox {
+  color: $white;
+  text-align: center;
+  font-size: 2em;
+  span {
+    color: $orange;
+  }
+  #failure {
+    color: red !important;
+  }
+}
+
+footer {
+  text-align: center;
+  color: $white;
+  a {
+    text-decoration: none;
+    color: $white;
+    &:hover {
+      color: $orange;
+    }
+  }
+}

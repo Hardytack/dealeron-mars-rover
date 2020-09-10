@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>DealerOn</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <header>
+        <h1>Mars Rover Control Panel</h1>
+      </header>
+      <main>
+        <form>
+          <div class="form-group">
+            <label>Grid <span>(2 numbers)</span></label>
+            <input type="text" placeholder="55" value="55" maxlength="2" />
+          </div>
+          <div class="form-group">
+            <label
+              >First Robot Starting Position
+              <span>(2 numbers and a letter[N, E, S, W])</span></label
+            >
+            <input type="text" placeholder="12N" value="12N" maxlength="3" />
+          </div>
+          <div class="form-group">
+            <label
+              >First Robot Path <span>(Any amount of L, R and M)</span></label
+            >
+            <input type="text" placeholder="LMLMLMLMM" value="LMLMLMLMM" />
+          </div>
+          <div class="form-group">
+            <label
+              >Second Robot Starting Position
+              <span>(2 numbers and a letter[N, E, S, W])</span></label
+            >
+            <input type="text" placeholder="33E" value="33E" maxlength="3" />
+          </div>
+          <div class="form-group">
+            <label
+              >Second Robot Path <span>(Any amount of L, R and M)</span></label
+            >
+            <input type="text" placeholder="MMRMMRMRRM" value="MMRMMRMRRM" />
+          </div>
+          <div class="form-group">
+            <button>Move Robots</button>
+          </div>
+        </form>
+        <div id="resultBox">
+          <p id="robot1"></p>
+          <p id="robot2"></p>
+          <p id="failure"></p>
+        </div>
+      </main>
+      <footer>
+        <a href="http://michaelboro.tech">Michael Boro</a> -
+        <a href="https://github.com/Hardytack">Github</a>
+      </footer>
+    </div>
+    <script src="assets/main.js"></script>
+  </body>
+</html>
