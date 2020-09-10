@@ -1,8 +1,12 @@
+/// <reference path="./validators.ts" />
+
+// Grabs the various html elements used throughout the project
 const robotForm = document.querySelector("form");
 const robot1Text = document.getElementById("robot1");
 const robot2Text = document.getElementById("robot2");
 const failure = document.getElementById("failure");
 
+// Connects the html form to the function
 robotForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (
@@ -32,7 +36,8 @@ robotForm.addEventListener("submit", (e) => {
   }
 });
 
-// Wrapper function for moving the robot
+// Wrapper / Validation function for moving the robot
+// See the various validator functions at ./validators.ts
 function marsRovers(
   grid: string,
   start1: string,
@@ -62,42 +67,6 @@ function marsRovers(
   );
 
   return { valid: true, robot1: robot1.join(""), robot2: robot2.join("") };
-}
-
-//Checks if the grid is valid
-function validGrid(arr: Array<string>) {
-  let check: Boolean = true;
-  arr.forEach((num) => {
-    if (!parseInt(num) || parseInt(num) <= 0) {
-      return (check = false);
-    }
-  });
-  return check;
-}
-
-// Verify if starting position is valid (first two are number)
-function validPosition(arr: Array<string>) {
-  let availableLetters: Array<string> = ["N", "S", "E", "W"];
-  if (arr.length > 3) {
-    return false;
-  } else if (!parseInt(arr[0]) || !parseInt(arr[1])) {
-    return false;
-  } else if (availableLetters.indexOf(arr[2]) === -1) {
-    return false;
-  }
-  return true;
-}
-
-// Verify if the list of instructions is valid (only L, R and M)
-function validMovement(arr: Array<string>) {
-  let availableLetters: Array<string> = ["M", "L", "R"];
-  let check: Boolean = true;
-  arr.forEach((letter) => {
-    if (availableLetters.indexOf(letter) === -1) {
-      check = false;
-    }
-  });
-  return check;
 }
 
 // Handles each robots movements
@@ -141,7 +110,7 @@ function changeDirection(current, turn) {
     if (current == "E") return "N";
     if (current == "S") return "E";
     else return "S";
-  } else {
+  } else if (turn === "R") {
     if (current == "N") return "E";
     if (current == "E") return "S";
     if (current == "S") return "W";

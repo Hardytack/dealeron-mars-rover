@@ -1,7 +1,10 @@
+/// <reference path="./validators.ts" />
+// Grabs the various html elements used throughout the project
 var robotForm = document.querySelector("form");
 var robot1Text = document.getElementById("robot1");
 var robot2Text = document.getElementById("robot2");
 var failure = document.getElementById("failure");
+// Connects the html form to the function
 robotForm.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!e.target[0].value ||
@@ -22,7 +25,8 @@ robotForm.addEventListener("submit", function (e) {
         robot2Text.innerHTML = "";
     }
 });
-// Wrapper function for moving the robot
+// Wrapper / Validation function for moving the robot
+// See the various validator functions at ./validators.ts
 function marsRovers(grid, start1, input1, start2, input2) {
     if (!validGrid(grid.split(""))) {
         return { valid: false };
@@ -36,41 +40,6 @@ function marsRovers(grid, start1, input1, start2, input2) {
     var robot1 = operateRobot(start1.split(""), input1.split(""), grid.split(""));
     var robot2 = operateRobot(start2.split(""), input2.split(""), grid.split(""));
     return { valid: true, robot1: robot1.join(""), robot2: robot2.join("") };
-}
-//Checks if the grid is valid
-function validGrid(arr) {
-    var check = true;
-    arr.forEach(function (num) {
-        if (!parseInt(num) || parseInt(num) <= 0) {
-            return (check = false);
-        }
-    });
-    return check;
-}
-// Verify if starting position is valid (first two are number)
-function validPosition(arr) {
-    var availableLetters = ["N", "S", "E", "W"];
-    if (arr.length > 3) {
-        return false;
-    }
-    else if (!parseInt(arr[0]) || !parseInt(arr[1])) {
-        return false;
-    }
-    else if (availableLetters.indexOf(arr[2]) === -1) {
-        return false;
-    }
-    return true;
-}
-// Verify if the list of instructions is valid (only L, R and M)
-function validMovement(arr) {
-    var availableLetters = ["M", "L", "R"];
-    var check = true;
-    arr.forEach(function (letter) {
-        if (availableLetters.indexOf(letter) === -1) {
-            check = false;
-        }
-    });
-    return check;
 }
 // Handles each robots movements
 function operateRobot(robot, input, grid) {
@@ -124,7 +93,7 @@ function changeDirection(current, turn) {
         else
             return "S";
     }
-    else {
+    else if (turn === "R") {
         if (current == "N")
             return "E";
         if (current == "E")
